@@ -7,13 +7,11 @@
 
 using namespace geode::prelude;
 
-
-class ColorTriggerGenUI : public geode::Popup<GeneratorOptions, std::function<void(const GeneratorOptions)>> {
+class ColorTriggerGenUI : public geode::Popup {
     GeneratorOptions m_options;
     std::function<void(const GeneratorOptions)> m_callback;
 
     // Left side
-
     Ref<CCLabelBMFont> m_generatorSectionLabel;
     Ref<CCLayerColor> m_leftSideSeparator;
 
@@ -21,12 +19,10 @@ class ColorTriggerGenUI : public geode::Popup<GeneratorOptions, std::function<vo
     Ref<CCLabelBMFont> m_useGdGridSpaceText;
     Ref<CCMenuItemSpriteExtra> m_useGdGridSpaceInfoButton;
 
-    // Float text inputs
     Ref<TextInput> m_offsetXinput;
     Ref<TextInput> m_offsetYinput;
 
     // Right side
-
     Ref<CCLabelBMFont> m_parserSectionLabel;
     Ref<CCLayerColor> m_rightSideSeparator;
 
@@ -42,9 +38,7 @@ class ColorTriggerGenUI : public geode::Popup<GeneratorOptions, std::function<vo
     Ref<CCMenuItemSpriteExtra> m_moreButton;
 
     // Bottom
-
     Ref<CCMenuItemSpriteExtra> m_generateButton;
-
 
     void createLeftSide();
     void createRightSide();
@@ -57,7 +51,7 @@ class ColorTriggerGenUI : public geode::Popup<GeneratorOptions, std::function<vo
     CCLayerColor* createSeparator(CCPoint pos, float width = 150.0f, float height = 2.0f);
 
 protected:
-    bool setup(GeneratorOptions options, std::function<void(const GeneratorOptions)>) override;
+    bool init(GeneratorOptions options, std::function<void(const GeneratorOptions)> callback);
 
 public:
     static ColorTriggerGenUI* create(
